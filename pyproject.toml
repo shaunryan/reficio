@@ -21,7 +21,7 @@ dev = [
     # To manually install databricks-connect, uncomment the line below to install a version
     # of db-connect that corresponds to the Databricks Runtime version used for this project.
     # See https://docs.databricks.com/dev-tools/databricks-connect.html
-    # "databricks-connect>=15.4,<15.5",
+    # "daabricks-connect>=15.4,<15.5",
 ]
 
 [tool.pytest.ini_options]
