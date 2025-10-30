@@ -19,14 +19,25 @@ resources:
           notebook_task:
             notebook_path: ../src/notebook.ipynb
 
-        - task_key: main_task
+        - task_key: get_taxis
           depends_on:
             - task_key: notebook_task
-
           environment_key: default
           python_wheel_task:
             package_name: reficio
-            entry_point: main
+            entry_point: get_taxis
+            named_parameters:
+              test: test
+
+        - task_key: get_taxi_count
+          depends_on:
+            - task_key: get_taxis
+          environment_key: default
+          python_wheel_task:
+            package_name: reficio
+            entry_point: get_taxi_count
+            named_parameters:
+              test: test
 
       # A list of task execution environment specifications that can be referenced by tasks of this job.
       environments:
@@ -35,6 +46,6 @@ resources:
           # Full documentation of this spec can be found at:
           # https://docs.databricks.com/api/workspace/jobs/create#environments-spec
           spec:
-            client: "2"
+            environment_version: "2"
             dependencies:
               - ../dist/*.whl
